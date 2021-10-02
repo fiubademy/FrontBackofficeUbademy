@@ -1,0 +1,11 @@
+.bg-color_custom_nav{
+    background-color: #A2CADF;
+}
+
+nav{
+    font-weight: bold;
+}
+
+nav .navbar-brand{
+    font-size: 2rem;
+}
