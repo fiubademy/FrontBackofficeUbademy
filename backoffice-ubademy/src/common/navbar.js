@@ -10,7 +10,7 @@ export default function NavigationBar() {
         <Navbar.Brand className="mx-3" href="/">
           UBADEMY
         </Navbar.Brand>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Toggle aria-controls="basic-navbar-nav" style={{marginRight:'2rem'}}/>
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="mr-auto">
             <NavDropdown
@@ -18,8 +18,11 @@ export default function NavigationBar() {
               title="Usuarios"
               id="dropdown_usuarios"
             >
-              <NavDropdown.Item href="/usuarios">
+              <NavDropdown.Item href="/users">
                 Administrar Usuarios
+              </NavDropdown.Item>
+              <NavDropdown.Item href="/users/transactions">
+                Listado de transacciones
               </NavDropdown.Item>
             </NavDropdown>
             <NavDropdown
@@ -27,7 +30,7 @@ export default function NavigationBar() {
               title="Cursos"
               id="dropdown_cursos"
             >
-              <NavDropdown.Item href="/cursos">
+              <NavDropdown.Item href="/courses">
                 Administrar Cursos
               </NavDropdown.Item>
             </NavDropdown>
@@ -36,7 +39,7 @@ export default function NavigationBar() {
               title="Servicios"
               id="dropdown_servicios"
             >
-              <NavDropdown.Item href="/cursos">
+              <NavDropdown.Item href="/services">
                 Administrar Servicios
               </NavDropdown.Item>
             </NavDropdown>
