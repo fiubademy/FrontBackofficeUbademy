@@ -1,0 +1,6 @@
+cd backoffice-ubademy
+npm install react
+npm install react-dom
+npm install react-router-dom
+npm install bootstrap
+npm install react-bootstrap
