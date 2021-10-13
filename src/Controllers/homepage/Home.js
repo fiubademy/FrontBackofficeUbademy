@@ -1,5 +1,5 @@
 import React from "react";
-import DashboardHomeCard from "./common/cards.js";
+import DashboardHomeCard from "../common/cards.js";
 
 export default function Home() {
     return (
@@ -10,7 +10,7 @@ export default function Home() {
             titulo="Administracion de Usuarios"
             descripcion="Módulo para creación y administración de proyectos y tareas."
             src_imagen="./usuario.jpg"
-            href={[["Usuarios", "./users"],["Transacciones", "./users/transactions"]]}
+            href={[["Usuarios", "./users"],["Transacciones", "/users/transactions"]]}
           />
           <DashboardHomeCard
             titulo="Administración de Cursos"
