@@ -1,0 +1,12 @@
+:root{
+    --light-blue-custom: #A2CADF
+}
+
+#usersTable{
+    background-color: var(--light-blue-custom) !important;
+}
+
+
+.centered_content{
+    text-align: center;
+}
