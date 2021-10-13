@@ -1,8 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
+import App from './Router/App';
 import reportWebVitals from './reportWebVitals';
+
+document.title = "BackOffice Ubademy"
 
 ReactDOM.render(
   <React.StrictMode>
