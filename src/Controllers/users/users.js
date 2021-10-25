@@ -1,9 +1,8 @@
 import React from 'react';
 import Button from 'react-bootstrap/Button';
 import Table from 'react-bootstrap/Table';
+import BlockModal from './BlockModal.js'
 import './users.css';
-
-
 
 class Users extends React.Component {
 
@@ -24,6 +23,7 @@ class Users extends React.Component {
                     username: user.username
                 }
             );
+            return null;
         }); 
         this.setState({users: usersList});
     }
@@ -35,6 +35,9 @@ class Users extends React.Component {
             users: []
         }
         this.getTableHTMLForUsersFromAPI = this.getTableHTMLForUsersFromAPI.bind(this);
+    }
+
+    componentDidMount(){
         this.getTableHTMLForUsersFromAPI();
     }
 
@@ -43,7 +46,8 @@ class Users extends React.Component {
     }
 
     handleBlock(){
-        alert("Not yet implemented");
+
+        alert(this.user_id + this.username);
     }
 
     handleUnblock(){
@@ -60,30 +64,32 @@ class Users extends React.Component {
                 <h1 style = {{ textAlign: 'center', textDecoration: 'underline' }}className = "pt-5 mt-4 mb-5">
                     Administración de Usuarios 
                 </h1>
-                <Table id="usersTable" responsive striped bordered>
-                    <thead>
-                        <tr className = "centered_content">
-                        <th> User ID </th> 
-                        <th> Username </th> 
-                        <th> View Profile </th> 
-                        <th> Block </th> 
-                        <th> Load Balance </th> 
-                        </tr> 
-                    </thead> 
-                    <tbody>
-                        {this.state.users.map((user) => {
-                            //ACORDARSE DE SETTEAR EL COMPORTAMIENTO DE LOS BOTONES EN EL ONCLICK
-                            return (
+                <div id="tableDiv" className="col-12 col-lg-10 container-fluid">
+                    <Table id="usersTable" responsive striped>
+                        <thead>
                             <tr className = "centered_content">
-                                <td key="1">{user.user_id}</td>
-                                <td key="2">{user.username}</td>
-                                <td key="3"><Button onClick={this.handleViewProfile}>View Profile</Button></td>
-                                <td key="4"><Button onClick={this.handleBlock}>Block</Button></td>
-                                <td key="5"><Button onClick={this.handleLoadBalance}>Load Balance</Button></td>
-                            </tr>);
-                        })}
-                    </tbody> 
-                </Table> 
+                            <th> User ID </th> 
+                            <th> Username </th> 
+                            <th> View Profile </th> 
+                            <th> Block </th> 
+                            <th> Load Balance </th> 
+                            </tr> 
+                        </thead> 
+                        <tbody>
+                            {this.state.users.map((user, index) => {
+                                //ACORDARSE DE SETTEAR EL COMPORTAMIENTO DE LOS BOTONES EN EL ONCLICK
+                                return (
+                                <tr key={index} className = "centered_content">
+                                    <td key={index+ user.user_id}>{user.user_id}</td>
+                                    <td key={index+ user.username}>{user.username}</td>
+                                    <td key={index+ "Profile"}><Button onClick={this.handleViewProfile}>View Profile</Button></td>
+                                    <td key={index+ "Block"}><BlockModal user={user}/></td>
+                                    <td key={index+ "Balance"}><Button onClick={this.handleLoadBalance}>Load Balance</Button></td>
+                                </tr>);
+                            })}
+                        </tbody> 
+                    </Table> 
+                </div>
             </div>
         );
     }

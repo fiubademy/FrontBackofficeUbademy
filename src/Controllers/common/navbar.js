@@ -8,7 +8,7 @@ export default function NavigationBar() {
 		<div className="fixed-top">
 		<Navbar bg="color_custom_nav" expand="lg">
 			<Navbar.Brand className="mx-3" href="/">
-				<img src="./Ubademy_inverted.png" height="65px" alt="logo-ubademy-home"/>
+				<img src="/Ubademy_inverted.png" height="65px" alt="logo-ubademy-home"/>
 			</Navbar.Brand>
 			<Navbar.Toggle aria-controls="basic-navbar-nav" style={{marginRight:'2rem'}}/>
 			<Navbar.Collapse id="basic-navbar-nav">
