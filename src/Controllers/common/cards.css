@@ -1,15 +1,12 @@
-:root{
-    --light-blue-custom: #A2CADF;
-    --dark-green-custom: rgb(51, 110, 123);
-    --blue-custom: rgb(19, 153, 213);
-}
-
 .cardButton{
-    background-color:'#001F3D'; 
+    background-color: var(--purple-custom);
     border-color:'#001F3D';
     font-weight: 'bold';
-    background-color: var(--blue-custom);
-    border-color: var(--blue-custom);
+    border: 0;
     color:white;
     border-radius: 15px;
+}
+
+.cardButton:hover{
+    background-color: var(--blue-custom);
 }

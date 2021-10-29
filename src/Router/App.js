@@ -16,6 +16,7 @@ import Transactions from "../Controllers/users/transactions.js";
 import Courses from "../Controllers/courses/courses.js";
 import Services from "../Controllers/services/services.js";
 import "../Controllers/common/cards.css";
+import Profile from "../Controllers/users/Profile";
 
 function App() {
 	return (
@@ -28,6 +29,7 @@ function App() {
 			<Route exact path="/" component={Home}/>
 			<Route exact path="/users" component={Users}/>
 			<Route exact path="/users/transactions" component={Transactions}/>
+			<Route path = "/users/profile" component={Profile}/>
 			<Route exact path="/services" component={Services}/>
 			<Route exact path="/courses" component={Courses}/>
 			</Switch>

@@ -42,7 +42,7 @@ class Users extends React.Component {
     }
 
     handleViewProfile(){
-        alert("Not yet implemented");
+        alert(this.username);
     }
 
     handleBlock(){
@@ -61,7 +61,7 @@ class Users extends React.Component {
     render() {
         return (
             <div className = "container-fluid">
-                <h1 style = {{ textAlign: 'center', textDecoration: 'underline' }}className = "pt-5 mt-4 mb-5">
+                <h1 id="TituloUsuarios" style = {{ textAlign: 'center'}} className = "pt-5 mt-4 mb-5">
                     Administración de Usuarios 
                 </h1>
                 <div id="tableDiv" className="col-12 col-lg-10 container-fluid">
@@ -78,11 +78,12 @@ class Users extends React.Component {
                         <tbody>
                             {this.state.users.map((user, index) => {
                                 //ACORDARSE DE SETTEAR EL COMPORTAMIENTO DE LOS BOTONES EN EL ONCLICK
-                                return (
+                                let href = "./users/profile/?uid="+ user.user_id
+;                                return (
                                 <tr key={index} className = "centered_content">
                                     <td key={index+ user.user_id}>{user.user_id}</td>
                                     <td key={index+ user.username}>{user.username}</td>
-                                    <td key={index+ "Profile"}><Button onClick={this.handleViewProfile}>View Profile</Button></td>
+                                    <td key={index+ "Profile"}><a className="btn btn-primary" href={href}>View Profile</a></td>
                                     <td key={index+ "Block"}><BlockModal user={user}/></td>
                                     <td key={index+ "Balance"}><Button onClick={this.handleLoadBalance}>Load Balance</Button></td>
                                 </tr>);

@@ -18,10 +18,10 @@ export default function NavigationBar() {
 				title="Usuarios"
 				id="dropdown_usuarios"
 				>
-				<NavDropdown.Item href="/users">
+				<NavDropdown.Item href="/users" className="userItem">
 					Administrar Usuarios
 				</NavDropdown.Item>
-				<NavDropdown.Item href="/users/transactions">
+				<NavDropdown.Item href="/users/transactions" className="userItem">
 					Listado de transacciones
 				</NavDropdown.Item>
 				</NavDropdown>
@@ -30,7 +30,7 @@ export default function NavigationBar() {
 				title="Cursos"
 				id="dropdown_cursos"
 				>
-				<NavDropdown.Item href="/courses">
+				<NavDropdown.Item href="/courses" className="courseItem">
 					Administrar Cursos
 				</NavDropdown.Item>
 				</NavDropdown>
@@ -39,7 +39,7 @@ export default function NavigationBar() {
 				title="Servicios"
 				id="dropdown_servicios"
 				>
-				<NavDropdown.Item href="/services">
+				<NavDropdown.Item href="/services" className="serviceItem">
 					Administrar Servicios
 				</NavDropdown.Item>
 				</NavDropdown>

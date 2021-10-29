@@ -1,0 +1,11 @@
+@import "../common/colors.css";
+
+#TituloCursos{
+    background-color: var(--light-green-custom) !important;
+    margin: 25%;
+    padding: 30px 10px;
+    border-radius:30px;
+    border-top:0;
+    box-shadow:10px 15px 15px 5px var(--shadow-color);
+    position: relative;
+}

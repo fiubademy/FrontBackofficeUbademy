@@ -1,8 +1,4 @@
-:root{
-    --light-blue-custom: #A2CADF;
-    --dark-green-custom: rgb(51, 110, 123);
-    --blue-custom: rgb(19, 153, 213);
-}
+@import "../common/colors.css";
 
 #usersTable{
     background-color: var(--light-blue-custom) !important;
@@ -19,9 +15,10 @@
     border-radius: 0.75rem;
     padding: 10px;
     background-color: var(--light-blue-custom);
+    box-shadow:10px 15px 15px 5px var(--shadow-color);
 }
 
 .btn-primary{
-    background-color: var(--blue-custom);
-    border-color: var(--blue-custom);
+    background-color: var(--purple-custom);
+    border-color: var(--purple-custom);
 }
