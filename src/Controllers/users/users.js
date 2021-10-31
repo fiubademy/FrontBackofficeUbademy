@@ -61,7 +61,7 @@ class Users extends React.Component {
     render() {
         return (
             <div className = "container-fluid">
-                <h1 id="TituloUsuarios" style = {{ textAlign: 'center'}} className = "pt-5 mt-4 mb-5">
+                <h1 id="TituloUsuarios" style = {{ textAlign: 'center'}} className = "pt-5 mt-4 mb-5 col-12">
                     Administración de Usuarios 
                 </h1>
                 <div id="tableDiv" className="col-12 col-lg-10 container-fluid">

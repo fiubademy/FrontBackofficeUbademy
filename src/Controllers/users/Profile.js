@@ -34,11 +34,6 @@ export default class Profile extends React.Component{
         this.fetchUser();
     }
 
-
-    
-
-
-
     render(){
         return(
         <div className="container-fluid mt-5 pt-4 row d-flex justify-content-center">
