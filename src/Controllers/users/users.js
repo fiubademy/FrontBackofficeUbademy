@@ -105,10 +105,10 @@ class Users extends React.Component {
                 <h1 id="TituloUsuarios" style = {{ textAlign: 'center'}} className = "pt-5 mt-4 mb-5 col-12">
                     Administración de Usuarios 
                 </h1>
-                <div id="filtersDiv" className={'d-flex justify-content-around mb-4'}>
-                    <input className={'col-12 col-lg-4 filterInput'} placeholder='Filter by Email...' id='emailFilter'></input>
-                    <input className={'col-12 col-lg-4 filterInput'} placeholder='Filter by Username...' id='usernameFilter'></input>
-                    <Button className={'col-lg-2'} onClick={this.filterUsers}>Filter Users</Button>
+                <div id="filtersDiv" className={'row d-flex justify-content-around'}>
+                    <input className={'col-12 col-lg-4 filterInput mb-4'} placeholder='Filter by Email...' id='emailFilter'></input>
+                    <input className={'col-12 col-lg-4 filterInput mb-4'} placeholder='Filter by Username...' id='usernameFilter'></input>
+                    <Button className={'col-lg-2 mb-4'} onClick={this.filterUsers}>Filter Users</Button>
                 </div>
                 <div id="tableDiv" className="col-12 col-lg-10 container-fluid">
                     <Table id="usersTable" responsive striped>
