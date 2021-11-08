@@ -8,33 +8,49 @@ class Users extends React.Component {
 
     async fetchUsers(){
         let info;
-        let info_response = await fetch("https://api-usuarios-fiubademy.herokuapp.com/users"); //Despues habría que integrar lo de la pagina y la API Gateway.
-        info = await info_response.json();
-        return info;
+        let info_response = await fetch("https://api-gateway-fiubademy.herokuapp.com/users/"+this.state.page+"?emailFilter="+this.state.emailFilter+"&usernameFilter="+this.state.usernameFilter); //Despues habría que integrar lo de la pagina y la API Gateway.
+        if(await info_response.status === 200){
+            info = await info_response.json();
+            return info;
+        }else{
+            return 'ERROR';
+        }
     }
 
     async getTableHTMLForUsersFromAPI() {
         let usersList = [];
-        let users = await this.fetchUsers();  
-        users.map((user) => {
-            usersList.push(
-                {
-                    user_id: user.user_id,
-                    username: user.username
-                }
-            );
-            return null;
-        }); 
-        this.setState({users: usersList});
+        let response = await this.fetchUsers();
+        let users = response['content'];
+        let maxPages = response['num_pages'];
+        if (users !== 'ERROR'){
+            users.map((user) => {
+                usersList.push(
+                    {
+                        user_id: user.user_id,
+                        username: user.username
+                    }
+                );
+                return null;
+            }); 
+            this.setState({maxPages: maxPages, users: usersList});
+        }else{
+            this.setState({users: usersList});
+        }
     }
 
     constructor(props) {
         super(props);
         this.state = {
+            maxPages: 1,
             page: 1,
-            users: []
+            users: [],
+            emailFilter: '',
+            usernameFilter: ''
         }
         this.getTableHTMLForUsersFromAPI = this.getTableHTMLForUsersFromAPI.bind(this);
+        this.subtractPage = this.subtractPage.bind(this);
+        this.sumPage = this.sumPage.bind(this);
+        this.filterUsers = this.filterUsers.bind(this);
     }
 
     componentDidMount(){
@@ -58,12 +74,42 @@ class Users extends React.Component {
         alert("Not yet implemented");
     }
 
+    async subtractPage(){
+        if(this.state.page-1 < 1){
+            await this.setState({page:this.state.maxPages});
+        }else{
+            await this.setState({page:this.state.page-1});
+        }
+        this.getTableHTMLForUsersFromAPI();
+
+    }
+
+    async sumPage(){
+        if(this.state.page+1 > this.state.maxPages){
+            await this.setState({page:1})
+        }else{
+            await this.setState({page:this.state.page+1});
+        }
+        this.getTableHTMLForUsersFromAPI();
+    }
+
+    async filterUsers(){
+        console.log(document.getElementById('emailFilter').innerHTML);
+        await this.setState({emailFilter: document.getElementById('emailFilter').value, usernameFilter: document.getElementById('usernameFilter').value});
+        this.getTableHTMLForUsersFromAPI();
+    }
+
     render() {
         return (
             <div className = "container-fluid">
                 <h1 id="TituloUsuarios" style = {{ textAlign: 'center'}} className = "pt-5 mt-4 mb-5 col-12">
                     Administración de Usuarios 
                 </h1>
+                <div id="filtersDiv" className={'d-flex justify-content-around mb-4'}>
+                    <input className={'col-12 col-lg-4 filterInput'} placeholder='Filter by Email...' id='emailFilter'></input>
+                    <input className={'col-12 col-lg-4 filterInput'} placeholder='Filter by Username...' id='usernameFilter'></input>
+                    <Button className={'col-lg-2'} onClick={this.filterUsers}>Filter Users</Button>
+                </div>
                 <div id="tableDiv" className="col-12 col-lg-10 container-fluid">
                     <Table id="usersTable" responsive striped>
                         <thead>
@@ -90,6 +136,12 @@ class Users extends React.Component {
                             })}
                         </tbody> 
                     </Table> 
+                </div>
+                <div id="tablePaginator">
+                    <button style={{float:'left'} } id='buttonPageLeft' onClick={this.subtractPage}>&laquo;Previous Page</button>
+                    <div style={{float:'left'}} id='currentPage'>{this.state.page}/{this.state.maxPages}</div>
+                    <button style={{float:'left'}} id='buttonPageRight' onClick={this.sumPage}>Next Page&raquo;</button>
+
                 </div>
             </div>
         );
