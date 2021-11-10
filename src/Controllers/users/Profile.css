@@ -1,0 +1,52 @@
+@import "../common/colors.css";
+
+.title-info{
+    color: black;
+    background-color: var(--light-blue-custom);
+    text-align:center;
+    margin-bottom: 20px;
+    border-bottom: 3px solid black;
+}
+
+.container-info{
+    padding: 0;
+    border: 20px solid var(--light-blue-custom);
+    background-color: var(--light-blue-custom);
+    border-radius: 15px;
+    box-shadow: 10px 15px 15px 5px #999999;
+    margin-bottom: 60px;
+}
+
+.field-info{
+    border: 2px solid var(--purple-custom);
+    background-color: var(--purple-custom);
+    color:white;
+    border-radius: 10px;
+    margin: 10px;
+}
+
+#coursesTable{
+    background-color: var(--purple-custom);
+    color: white;
+    border-color: var(---purple-custom);
+    
+}
+
+#coursesTable td{
+    color:white;
+}
+
+#tableDivCourses{
+    border-radius: 0.75rem;
+    padding: 10px;
+    background-color: var(--light-blue-custom);
+    background-color: var(--purple-custom);
+    box-shadow: 0 0 0 0;
+}
+
+@media(min-width:992px){
+    #email_div{
+        margin-left:20px;
+    }
+}
+

@@ -1,0 +1,13 @@
+@import "../common/colors.css";
+
+#usuarios-card{
+    background-color: var(--light-blue-custom);
+}
+
+#cursos-card{
+    background-color: var(--light-green-custom);
+}
+
+#servicios-card{
+    background-color: var(--light-pink-custom);
+}

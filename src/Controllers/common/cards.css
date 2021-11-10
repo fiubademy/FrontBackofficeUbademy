@@ -1,7 +1,12 @@
 .cardButton{
-    background-color:'#001F3D'; 
+    background-color: var(--purple-custom);
     border-color:'#001F3D';
     font-weight: 'bold';
-    background-color: #A2CADF;
+    border: 0;
+    color:white;
     border-radius: 15px;
+}
+
+.cardButton:hover{
+    background-color: var(--blue-custom);
 }

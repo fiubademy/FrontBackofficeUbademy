@@ -1,12 +1,92 @@
-:root{
-    --light-blue-custom: #A2CADF
-}
+@import "../common/colors.css";
 
 #usersTable{
     background-color: var(--light-blue-custom) !important;
+    padding: 0;
+    margin: 0;
 }
 
 
 .centered_content{
     text-align: center;
+}
+
+#tableDiv{
+    border-radius: 0.75rem;
+    padding: 10px;
+    background-color: var(--light-blue-custom);
+    box-shadow:10px 15px 15px 5px var(--shadow-color);
+}
+
+.btn-primary{
+    background-color: var(--purple-custom) !important;
+    font-weight: 'bold';
+    border: 0;
+    color:white;
+    border-radius: 15px;
+}
+
+.btn-primary:hover{
+    background-color: var(--blue-custom) !important;
+}
+
+
+#TituloUsuarios{
+    background-color: var(--light-blue-custom) !important;
+    padding: 30px 0;
+    border-radius:30px;
+    border-top:0;
+    box-shadow:10px 15px 15px 5px var(--shadow-color);
+}
+
+#tablePaginator{
+    margin-top: 30px;
+    overflow: hidden;
+    display:flex;
+    justify-content: center;
+}
+
+#currentPage{
+    background-color: var(--purple-custom);
+    color: white;
+    font-size: 20px;
+    padding: 2px 10px;
+}
+
+#buttonPageRight{
+    background-color: var(--purple-custom);
+    border:5px 5 5px 5px 0px solid var(--purple-custom);
+    color: white;
+    padding: 0 10px;
+    border-left: 2px solid var(--light-blue-custom);
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+#buttonPageLeft{
+    background-color: var(--purple-custom);
+    color: white;
+    border:5px 0 5px 5px 5px solid var(--purple-custom);
+    padding: 0 10px;
+    border-right: 2px solid  var(--light-blue-custom);
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+.filterInput{
+    background-color: var(--light-blue-custom);
+    color:black;
+    padding: 10px;
+    border-radius: 10px;
+    border: 15px solid var(--light-blue-custom);
+    box-shadow:4px 6px 6px 2px var(--shadow-color);
+    
+}
+
+.box-shadow{
+    box-shadow: 10px 15px 15px 5px var(--shadow-color);
+}
+
+.filterInput::placeholder{
+    color: gray;
 }
