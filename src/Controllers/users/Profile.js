@@ -62,7 +62,7 @@ export default class Profile extends React.Component{
 
     async fetchCourses(){
         let courses_data;
-        let info_response_courses = await fetch("http://api-cursos-fiubademy.herokuapp.com/courses/student/"+this.user_id);
+        let info_response_courses = await fetch("https://api-cursos-fiubademy.herokuapp.com/courses/student/"+this.user_id);
         courses_data = await info_response_courses;
         console.log("status code: " + courses_data.status);
         if (courses_data.status === 200){
