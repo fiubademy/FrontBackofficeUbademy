@@ -25,8 +25,28 @@
     margin: 10px;
 }
 
+#coursesTable{
+    background-color: var(--purple-custom);
+    color: white;
+    border-color: var(---purple-custom);
+    
+}
+
+#coursesTable td{
+    color:white;
+}
+
+#tableDivCourses{
+    border-radius: 0.75rem;
+    padding: 10px;
+    background-color: var(--light-blue-custom);
+    background-color: var(--purple-custom);
+    box-shadow: 0 0 0 0;
+}
+
 @media(min-width:992px){
     #email_div{
         margin-left:20px;
     }
 }
+

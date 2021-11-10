@@ -59,7 +59,7 @@ class Transactions extends React.Component {
     render() {
         return (
             <div className = "container-fluid">
-                <h1 style = {{ textAlign: 'center', textDecoration: 'underline' }}className = "pt-5 mt-4 mb-5">
+                <h1 id="TituloUsuarios" style = {{ textAlign: 'center', textDecoration: 'underline' }}className = "pt-5 mt-4 mb-5">
                     Administración de Transacciones
                 </h1>
                 <div id="tableDiv" className="col-12 col-lg-10 container-fluid">

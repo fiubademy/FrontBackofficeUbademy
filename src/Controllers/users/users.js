@@ -1,7 +1,7 @@
 import React from 'react';
 import Button from 'react-bootstrap/Button';
 import Table from 'react-bootstrap/Table';
-import BlockModal from './BlockModal.js'
+import BlockModal from './BlockModal.js';
 import './users.css';
 
 class Users extends React.Component {
@@ -20,9 +20,9 @@ class Users extends React.Component {
     async getTableHTMLForUsersFromAPI() {
         let usersList = [];
         let response = await this.fetchUsers();
-        let users = response['content'];
-        let maxPages = response['num_pages'];
-        if (users !== 'ERROR'){
+        if (response !== 'ERROR'){
+            let users = response['content'];
+            let maxPages = response['num_pages'];
             users.map((user) => {
                 usersList.push(
                     {
@@ -34,7 +34,7 @@ class Users extends React.Component {
             }); 
             this.setState({maxPages: maxPages, users: usersList});
         }else{
-            this.setState({users: usersList});
+            this.setState({users: usersList, maxPages: 1});
         }
     }
 
@@ -94,8 +94,7 @@ class Users extends React.Component {
     }
 
     async filterUsers(){
-        console.log(document.getElementById('emailFilter').innerHTML);
-        await this.setState({emailFilter: document.getElementById('emailFilter').value, usernameFilter: document.getElementById('usernameFilter').value});
+        await this.setState({page: 1, emailFilter: document.getElementById('emailFilter').value, usernameFilter: document.getElementById('usernameFilter').value});
         this.getTableHTMLForUsersFromAPI();
     }
 
@@ -108,7 +107,7 @@ class Users extends React.Component {
                 <div id="filtersDiv" className={'row d-flex justify-content-around'}>
                     <input className={'col-12 col-lg-4 filterInput mb-4'} placeholder='Filter by Email...' id='emailFilter'></input>
                     <input className={'col-12 col-lg-4 filterInput mb-4'} placeholder='Filter by Username...' id='usernameFilter'></input>
-                    <Button className={'col-lg-2 mb-4'} onClick={this.filterUsers}>Filter Users</Button>
+                    <Button className={'col-lg-2 mb-4 box-shadow'} onClick={this.filterUsers}>Filter Users</Button>
                 </div>
                 <div id="tableDiv" className="col-12 col-lg-10 container-fluid">
                     <Table id="usersTable" responsive striped>
@@ -122,18 +121,19 @@ class Users extends React.Component {
                             </tr> 
                         </thead> 
                         <tbody>
-                            {this.state.users.map((user, index) => {
+                            {
+                                this.state.users.map((user, index) => {
                                 //ACORDARSE DE SETTEAR EL COMPORTAMIENTO DE LOS BOTONES EN EL ONCLICK
-                                let href = "./users/profile/?uid="+ user.user_id
-;                                return (
-                                <tr key={index} className = "centered_content">
+                                let href = "./users/profile/?uid="+ user.user_id;
+                                    return (<tr key={index} className = "centered_content">
                                     <td key={index+ user.user_id}>{user.user_id}</td>
                                     <td key={index+ user.username}>{user.username}</td>
                                     <td key={index+ "Profile"}><a className="btn btn-primary" href={href}>View Profile</a></td>
                                     <td key={index+ "Block"}><BlockModal user={user}/></td>
                                     <td key={index+ "Balance"}><Button onClick={this.handleLoadBalance}>Load Balance</Button></td>
                                 </tr>);
-                            })}
+                                })
+                            }
                         </tbody> 
                     </Table> 
                 </div>

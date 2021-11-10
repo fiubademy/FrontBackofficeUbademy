@@ -80,6 +80,11 @@
     border-radius: 10px;
     border: 15px solid var(--light-blue-custom);
     box-shadow:4px 6px 6px 2px var(--shadow-color);
+    
+}
+
+.box-shadow{
+    box-shadow: 10px 15px 15px 5px var(--shadow-color);
 }
 
 .filterInput::placeholder{
