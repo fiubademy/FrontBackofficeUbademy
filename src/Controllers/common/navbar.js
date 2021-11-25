@@ -1,7 +1,7 @@
 import React from "react";
 
 import { Navbar, Nav, NavDropdown } from "react-bootstrap";
-import Button from "react-bootstrap/button";
+import Button from "react-bootstrap/Button";
 import "./navbar.css";
 
 async function logout(){
