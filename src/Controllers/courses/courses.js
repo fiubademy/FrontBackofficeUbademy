@@ -84,12 +84,13 @@ export default class Courses extends React.Component{
             url = url + "longitude="+this.state.longitudeFilter
             query_params_quantity += 1
         }
+        return url;
     }
 
     async fetchCourses(){
         let info;
         let url = "https://api-cursos-fiubademy.herokuapp.com/courses/all/"+ this.state.page
-        this.completeURL(url);
+        url = this.completeURL(url);
         let info_response = await fetch(url);
         if(await info_response.status === 200){
             info = await info_response.json();
