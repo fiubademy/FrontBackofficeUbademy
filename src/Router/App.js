@@ -3,7 +3,7 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  //Redirect,
+  useHistory
 } from "react-router-dom";
 
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -16,9 +16,27 @@ import Transactions from "../Controllers/users/transactions.js";
 import Courses from "../Controllers/courses/courses.js";
 import Services from "../Controllers/services/services.js";
 import "../Controllers/common/cards.css";
-import Profile from "../Controllers/users/Profile";
+import Profile from "../Controllers/users/Profile.js";
+import Login from "../Controllers/login/Login.js";
+import CourseView from "../Controllers/courses/CourseView.js"
+
+function checkTokenAuth(){
+	const token = localStorage.getItem('sessionToken');
+	if (!token){
+		return false;
+	}
+	return true;
+}
 
 function App() {
+	if(!checkTokenAuth()){
+		//history.push('/');
+		return (
+			<Router>
+				<Login/>
+			</Router>
+		)
+	}
 	return (
 		<Router>
 		<div>
@@ -26,12 +44,13 @@ function App() {
 			<br></br>
 			<NavigationBar />
 			<Switch>
-			<Route exact path="/" component={Home}/>
-			<Route exact path="/users" component={Users}/>
-			<Route exact path="/users/transactions" component={Transactions}/>
-			<Route path = "/users/profile" component={Profile}/>
-			<Route exact path="/services" component={Services}/>
-			<Route exact path="/courses" component={Courses}/>
+				<Route exact path="/" component={Home}/>
+				<Route exact path="/users" component={Users}/>
+				<Route exact path="/users/transactions" component={Transactions}/>
+				<Route path = "/users/profile" component={Profile}/>
+				<Route exact path="/services" component={Services}/>
+				<Route exact path="/courses" component={Courses}/>
+				<Route path = "/courses/view" component={CourseView}/>
 			</Switch>
 		</div>
 		</Router>

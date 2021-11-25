@@ -1,0 +1,32 @@
+@import "../common/colors.css";
+
+#container-login{
+    background-color: var(--light-pink-custom);
+    border: 20px solid var(--light-pink-custom);
+    border-radius: 20px;
+    margin-top: 20px;
+    box-shadow:10px 15px 15px 5px var(--shadow-color);
+}
+
+#login-title{
+    text-align: center;
+}
+
+.input-login{
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+    width: 80%;
+    padding: 10px 5px;
+    border: 10px solid var(--light-blue-custom);
+    background-color: var(--light-blue-custom);
+    border-radius: 20px;
+    color:black;
+}
+
+#button-login{
+    width: 400px;
+    height: 75px;
+    font-size: 30px;
+    text-align: center;
+}

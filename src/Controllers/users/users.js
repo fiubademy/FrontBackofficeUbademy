@@ -105,6 +105,7 @@ class Users extends React.Component {
                     Administración de Usuarios 
                 </h1>
                 <div id="filtersDiv" className={'row d-flex justify-content-around'}>
+                    <h2 id="tituloFiltros">Filtros</h2>
                     <input className={'col-12 col-lg-4 filterInput mb-4'} placeholder='Filter by Email...' id='emailFilter'></input>
                     <input className={'col-12 col-lg-4 filterInput mb-4'} placeholder='Filter by Username...' id='usernameFilter'></input>
                     <Button className={'col-lg-2 mb-4 box-shadow'} onClick={this.filterUsers}>Filter Users</Button>
