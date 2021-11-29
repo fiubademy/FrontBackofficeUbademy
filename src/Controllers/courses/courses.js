@@ -29,67 +29,30 @@ export default class Courses extends React.Component{
     }
 
     completeURL(url){
-        let query_params_quantity = 0
         if (this.state.nameFilter !== ''){
-            if (query_params_quantity === 0){
-                url = url + '/?'
-            }else{
-                url = url + '&'
-            }
-            url = url + "name="+this.state.nameFilter
-            query_params_quantity += 1
+            url = url + "&name="+this.state.nameFilter
         }
         if (this.state.ownerFilter !== ''){
-            if (query_params_quantity === 0){
-                url = url + '/?'
-            }else{
-                url = url + '&'
-            }
-            url = url + "owner="+this.state.ownerFilter
-            query_params_quantity += 1
+            url = url + "&owner="+this.state.ownerFilter
         }
         if (this.state.descriptionFilter !== ''){
-            if (query_params_quantity === 0){
-                url = url + '/?'
-            }else{
-                url = url + '&'
-            }
-            url = url + "description="+this.state.descriptionFilter
-            query_params_quantity += 1
+            url = url + "&description="+this.state.descriptionFilter
         }
         if (this.state.sub_levelFilter !== ''){
-            if (query_params_quantity === 0){
-                url = url + '/?'
-            }else{
-                url = url + '&'
-            }
-            url = url + "sub_level="+this.state.sub_levelFilter
-            query_params_quantity += 1
+            url = url + "&sub_level="+this.state.sub_levelFilter
         }
         if (this.state.latitudeFilter !== ''){
-            if (query_params_quantity === 0){
-                url = url + '/?'
-            }else{
-                url = url + '&'
-            }
-            url = url + "latitude="+this.state.latitudeFilter
-            query_params_quantity += 1
+            url = url + "&latitude="+this.state.latitudeFilter
         }
         if (this.state.longitudeFilter !== ''){
-            if (query_params_quantity === 0){
-                url = url + '/?'
-            }else{
-                url = url + '&'
-            }
-            url = url + "longitude="+this.state.longitudeFilter
-            query_params_quantity += 1
+            url = url + "&longitude="+this.state.longitudeFilter
         }
         return url;
     }
 
     async fetchCourses(){
         let info;
-        let url = "https://api-cursos-fiubademy.herokuapp.com/courses/all/"+ this.state.page + "?sessionToken="+localStorage.getItem("sessionToken");
+        let url = "https://api-gateway-fiubademy.herokuapp.com/courses/all/"+ this.state.page + "?sessionToken="+localStorage.getItem("sessionToken");
         url = this.completeURL(url);
         let info_response = await fetch(url);
         if(await info_response.status === 200){
