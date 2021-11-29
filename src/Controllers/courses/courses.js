@@ -89,13 +89,16 @@ export default class Courses extends React.Component{
 
     async fetchCourses(){
         let info;
-        let url = "https://api-cursos-fiubademy.herokuapp.com/courses/all/"+ this.state.page
+        let url = "https://api-cursos-fiubademy.herokuapp.com/courses/all/"+ this.state.page + "?sessionToken="+localStorage.getItem("sessionToken");
         url = this.completeURL(url);
         let info_response = await fetch(url);
         if(await info_response.status === 200){
             info = await info_response.json();
             return info;
         }else{
+            if(info_response.status === 498){
+                localStorage.removeItem("sessionToken");
+            }
             return 'ERROR';
         }
     }
@@ -187,15 +190,16 @@ export default class Courses extends React.Component{
                             {
                                 this.state.courses.map((course, index) => {
                                     let href = "./courses/view/?course_id="+ course.id;
+                                    let index_key = String(index);
                                     return (<tr key={index} className = "centered_content">
-                                    <td key={index+ course.id}>{course.id}</td>
-                                    <td key={index+ course.owner}>{course.ownerId}</td>
-                                    <td key={index+ course.name}>{course.name}</td>
-                                    <td key={index+ course.description}>{course.description}</td>
-                                    <td key={index+ course.latitude}>{course.latitude}</td>
-                                    <td key={index+ course.longitude}>{course.longitude}</td>
-                                    <td key={index+ course.sub_level}>{course.sub_level}</td>
-                                    <td key={index+ "Profile"}><a className="btn btn-primary" href={href}>View Course</a></td>
+                                    <td key={index_key+ course.id+'0'}>{course.id}</td>
+                                    <td key={index_key+ course.ownerId+'1'}>{course.ownerId}</td>
+                                    <td key={index_key+ course.name+'2'}>{course.name}</td>
+                                    <td key={index_key+ course.description+'3'}>{course.description}</td>
+                                    <td key={index_key+ course.latitude+'4'}>{course.latitude}</td>
+                                    <td key={index_key+ course.longitude+'5'}>{course.longitude}</td>
+                                    <td key={index_key+ course.sub_level+'6'}>{course.sub_level}</td>
+                                    <td key={index_key+ "Profile"+'7'}><a className="btn btn-primary" href={href}>View Course</a></td>
                                 </tr>);
                                 })
                             }

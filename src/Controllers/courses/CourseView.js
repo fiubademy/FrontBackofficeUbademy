@@ -14,12 +14,16 @@ export default class CourseView extends React.Component{
     }
 
     async fetchCourse(){
-        let url = "https://api-cursos-fiubademy.herokuapp.com/courses/"+ this.course_id;
+        let url = "https://api-gateway-fiubademy.herokuapp.com/courses/all/1?sessionToken="+localStorage.getItem("sessionToken")+'&id='+ this.course_id;
         let info_response = await fetch(url);
         if(await info_response.status === 200){
             let info = await info_response.json()
+            info = info['content'][0]
             this.setState({courseInfo: info});     
         }else{
+            if(info_response.status === 498){
+                localStorage.removeItem("sessionToken");
+            }
             this.setState({courseInfo: null});
         }
     }
