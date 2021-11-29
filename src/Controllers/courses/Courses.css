@@ -7,3 +7,80 @@
     border-top:0;
     box-shadow:10px 15px 15px 5px var(--shadow-color);
 }
+
+.courseFilterInput{
+    background-color: var(--light-green-custom);
+    color:black;
+    padding: 10px;
+    border-radius: 10px;
+    border: 15px solid var(--light-green-custom);
+    box-shadow:4px 6px 6px 2px var(--shadow-color);
+    font-size: 20px;
+}
+
+#filtersDiv{
+    background-color: lightgray;
+    border: 20px solid black;
+    border-radius:20px;
+    margin-bottom: 30px;
+}
+
+#tituloFiltros{
+    margin: 20px auto;
+    text-align:center;
+    font-size:50px;
+    text-decoration: underline;
+}
+
+#btn_filtrar{
+    font-size: 25px;
+}
+
+#tableDivCoursesModule{
+    background-color: var(--light-green-custom) !important;
+}
+
+#coursesModuleTable{
+    background-color: var(--light-green-custom) !important;
+    color:black !important;
+}
+
+#coursesTable td{
+    color: black !important;
+}
+
+#tablePaginator{
+    margin-top: 30px;
+    overflow: hidden;
+    display:flex;
+    justify-content: center;
+    margin-bottom:30px;
+}
+
+#currentPage{
+    background-color: var(--purple-custom);
+    color: white;
+    font-size: 20px;
+    padding: 2px 10px;
+}
+
+#buttonPageRight{
+    background-color: var(--purple-custom);
+    border:5px 5 5px 5px 0px solid var(--purple-custom);
+    color: white;
+    padding: 0 10px;
+    border-left: 2px solid var(--light-blue-custom);
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+#buttonPageLeft{
+    background-color: var(--purple-custom);
+    color: white;
+    border:5px 0 5px 5px 5px solid var(--purple-custom);
+    padding: 0 10px;
+    border-right: 2px solid  var(--light-blue-custom);
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+

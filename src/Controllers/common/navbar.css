@@ -67,3 +67,19 @@ a.dropdown-toggle{
 .courseItem:hover{
     background-color: var(--light-green-custom) !important;
 }
+
+#button-logout{
+    border: 10px solid #dc3545;
+    border-radius: 15px;
+    
+}
+
+#button-logout:hover{
+    border-color: #bb2d3b;
+}
+
+@media(min-width: 990px){
+    #button-logout{
+        margin-right:10px;
+    }
+}

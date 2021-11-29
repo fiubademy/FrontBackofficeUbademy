@@ -64,7 +64,6 @@ export default class Profile extends React.Component{
         let courses_data;
         let info_response_courses = await fetch("https://api-cursos-fiubademy.herokuapp.com/courses/student/"+this.user_id);
         courses_data = await info_response_courses;
-        console.log("status code: " + courses_data.status);
         if (courses_data.status === 200){
             return courses_data.json();
         }else{
@@ -97,6 +96,13 @@ export default class Profile extends React.Component{
 
 
     render(){
+        if (this.email === null){
+            <div className="container-fluid mt-5 pt-4 row d-flex justify-content-center">
+                <div className="container-info row mt-3">
+                    <h2 className="col-12 title-info">Usuario con ID: {this.user_id}, no fue encontrado</h2>
+                </div>
+            </div>
+        }
         return(
         <div className="container-fluid mt-5 pt-4 row d-flex justify-content-center">
             <div className="container-info row mt-3">
