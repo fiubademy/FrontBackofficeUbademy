@@ -15,12 +15,12 @@ export default function BlockModal(user) {
       let info_response = await fetch("https://api-gateway-fiubademy.herokuapp.com/users/"+userId+"/toggleBlock",
             {
                 method: 'PATCH',
-				headers: {'Content-Type': 'application/json', 'accept': 'application/json'},
+                headers: {'Content-Type': 'application/json', 'accept': 'application/json'},
                 body: JSON.stringify({"admin_ses_token": localStorage.getItem('sessionToken')})
             }
         );
         if(await info_response.status === 202){
-            alert(username + " has been correctly " + (isBlocked? "unblocked":"blocked"));
+            alert(username + " has been correctly " + (isBlocked==='Y'? "unblocked":"blocked"));
 			window.location.reload(false);
         }else if (await info_response.status === 498){
             localStorage.removeItem("sessionToken");
@@ -38,7 +38,7 @@ export default function BlockModal(user) {
     return (
       <>
         <Button onClick={handleShow}>
-			{isBlocked==='Y'? "Unblock" : "Block"}
+			    {isBlocked==='Y'? "Unblock" : "Block"}
         </Button>
         <Modal show={show} onHide={handleClose}>
           <Modal.Header closeButton>
@@ -50,7 +50,7 @@ export default function BlockModal(user) {
               Cancel
             </Button>
             <Button variant="primary" onClick={toggleBlockUser}>
-				{isBlocked==='Y'? "Unblock" : "Block"}
+				      {isBlocked==='Y'? "Unblock" : "Block"}
             </Button>
           </Modal.Footer>
         </Modal>
