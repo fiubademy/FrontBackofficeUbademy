@@ -26,10 +26,11 @@
 }
 
 #coursesTable{
-    background-color: var(--purple-custom);
-    color: white;
-    border-color: var(---purple-custom);
-    
+    background-color: white !important;
+    color: black;
+    border-color: var(--purple-custom);
+    margin:0;
+    border-radius: 0.75rem;    
 }
 
 #coursesTable td{

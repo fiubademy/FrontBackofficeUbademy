@@ -61,6 +61,7 @@ export default class Courses extends React.Component{
         }else{
             if(info_response.status === 498){
                 localStorage.removeItem("sessionToken");
+                window.location.reload(false);
             }
             return 'ERROR';
         }
@@ -162,7 +163,7 @@ export default class Courses extends React.Component{
                                     <td key={index_key+ course.latitude+'4'}>{course.latitude}</td>
                                     <td key={index_key+ course.longitude+'5'}>{course.longitude}</td>
                                     <td key={index_key+ course.sub_level+'6'}>{course.sub_level}</td>
-                                    <td key={index_key+ "Profile"+'7'}><a className="btn btn-primary" href={href}>View Course</a></td>
+                                    <td key={index_key+ "Profile7"}><a className="btn btn-primary" href={href}>View Course</a></td>
                                 </tr>);
                                 })
                             }

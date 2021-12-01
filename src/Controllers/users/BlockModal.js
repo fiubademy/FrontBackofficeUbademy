@@ -4,40 +4,53 @@ import Button from 'react-bootstrap/Button';
 
 export default function BlockModal(user) {
     const [show, setShow] = useState(false);
-    const [userId, setUserId] = useState(user.user.user_id);
-    const [username, setUsername] = useState(user.user.username);
+    const userId = user.user.user_id;
+    const username = user.user.username;
+    const isBlocked = user.user.is_blocked;
   
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
-    const block = ()=>{
-      //Should block de user with this userId from the platform.
-      console.log(userId);
-      alert("This function would block user with id: " + userId + " - and username: " + username + ", But it is Yet not implemented. API not currently available to block users...")
+    const toggleBlock = async ()=>{
+      let info_response = await fetch("https://api-gateway-fiubademy.herokuapp.com/users/"+userId+"/toggleBlock",
+            {
+                method: 'PATCH',
+				headers: {'Content-Type': 'application/json', 'accept': 'application/json'},
+                body: JSON.stringify({"admin_ses_token": localStorage.getItem('sessionToken')})
+            }
+        );
+        if(await info_response.status === 202){
+            alert(username + " has been correctly " + (isBlocked? "unblocked":"blocked"));
+			window.location.reload(false);
+        }else if (await info_response.status === 498){
+            localStorage.removeItem("sessionToken");
+            window.location.reload(false);
+        }
+      
       return null;
     }
 
-    const blockUser = () => {
-        block();
+    const toggleBlockUser = () => {
+        toggleBlock();
         handleClose();
     }
   
     return (
       <>
         <Button onClick={handleShow}>
-          Block
+			{isBlocked==='Y'? "Unblock" : "Block"}
         </Button>
         <Modal show={show} onHide={handleClose}>
           <Modal.Header closeButton>
-            <Modal.Title id="contained-modal-title-vcenter">¿Block {username}?</Modal.Title>
+            <Modal.Title id="contained-modal-title-vcenter">{isBlocked==='Y'? "Unblock" : "Block"} {username}?</Modal.Title>
           </Modal.Header>
-          <Modal.Body>Are you sure that you want to block {username}?</Modal.Body>
+          <Modal.Body>Are you sure that you want to {isBlocked==='Y'? "unblock" : "block"} {username}?</Modal.Body>
           <Modal.Footer>
             <Button variant="secondary" onClick={handleClose}>
               Cancel
             </Button>
-            <Button variant="primary" onClick={blockUser}>
-              Block
+            <Button variant="primary" onClick={toggleBlockUser}>
+				{isBlocked==='Y'? "Unblock" : "Block"}
             </Button>
           </Modal.Footer>
         </Modal>

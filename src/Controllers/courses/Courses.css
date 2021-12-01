@@ -19,9 +19,9 @@
 }
 
 #filtersDiv{
-    background-color: lightgray;
-    border: 20px solid black;
-    border-radius:20px;
+    /*background-color: lightgray;*/
+    border: 10px solid black;
+    border-radius:30px;
     margin-bottom: 30px;
 }
 
@@ -29,7 +29,6 @@
     margin: 20px auto;
     text-align:center;
     font-size:50px;
-    text-decoration: underline;
 }
 
 #btn_filtrar{
@@ -37,12 +36,17 @@
 }
 
 #tableDivCoursesModule{
+    border-radius: 0.75rem;
     background-color: var(--light-green-custom) !important;
+    padding: 10px;
+    box-shadow:10px 15px 15px 5px var(--shadow-color);
 }
 
 #coursesModuleTable{
-    background-color: var(--light-green-custom) !important;
+    background-color: white !important;
     color:black !important;
+    margin: 0px;
+    border-radius: 0.85rem;
 }
 
 #coursesTable td{

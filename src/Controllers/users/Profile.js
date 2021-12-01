@@ -9,7 +9,9 @@ export default class Profile extends React.Component{
         let query = new URLSearchParams(this.props.location.search);
         this.user_id = query.get("uid");
         this.state = {
-            courses: []
+            courses: [],
+            maxPages: 1,
+            page: 1
         };
         this.email = null;
         this.username = null;
@@ -19,6 +21,8 @@ export default class Profile extends React.Component{
         this.fetchUser = this.fetchUser.bind(this);
         this.fetchCourses = this.fetchCourses.bind(this);
         this.getTableHTMLForCoursesFromAPI = this.getTableHTMLForCoursesFromAPI.bind(this);
+        this.subtractPage = this.subtractPage.bind(this);
+        this.sumPage = this.sumPage.bind(this);
     }
     
     componentDidMount(){
@@ -28,7 +32,10 @@ export default class Profile extends React.Component{
     // dou ahora no rompe mas. 
     async fetchUser(){
         let user_data;
-        let info_response = await fetch("https://api-gateway-fiubademy.herokuapp.com/users/ID/"+this.user_id); //Despues habría que integrar lo de la pagina y la API Gateway.
+        let info_response = await fetch(
+            "https://api-gateway-fiubademy.herokuapp.com/users/ID/"+this.user_id,
+            {headers:{'accept': 'application/json'}}
+        ); //Despues habría que integrar lo de la pagina y la API Gateway.
         user_data = await info_response.json();
         this.username = user_data.username;
         document.getElementById('username').innerHTML = this.username;
@@ -62,19 +69,45 @@ export default class Profile extends React.Component{
 
     async fetchCourses(){
         let courses_data;
-        let info_response_courses = await fetch("https://api-cursos-fiubademy.herokuapp.com/courses/student/"+this.user_id);
+        let info_response_courses = await fetch(
+            "https://api-gateway-fiubademy.herokuapp.com/courses/student/"+this.user_id+"/"+this.state.page+"?sessionToken="+localStorage.getItem("sessionToken"),
+            {headers:{'accept': 'application/json'}}
+        );
         courses_data = await info_response_courses;
         if (courses_data.status === 200){
-            return courses_data.json();
+            courses_data = await courses_data.json();
+            this.setState({maxPages: courses_data['num_pages']});
+            return courses_data['content'];
         }else{
+            this.setState({maxPages: 1});
             return 'ERROR';
         }
+    }
+
+    async subtractPage(){
+        alert("subbing page");
+        if(this.state.page-1 < 1){
+            await this.setState({page:this.state.maxPages});
+        }else{
+            await this.setState({page:this.state.page-1});
+        }
+        this.fetchCourses();
+
+    }
+
+    async sumPage(){
+        alert("summing page");
+        if(this.state.page+1 > this.state.maxPages){
+            await this.setState({page:1})
+        }else{
+            await this.setState({page:this.state.page+1});
+        }
+        this.fetchCourses();
     }
     
     async getTableHTMLForCoursesFromAPI() {
         let coursesList = [];
         let courses = await this.fetchCourses();
-        console.log(courses);
         if (courses !== 'ERROR'){
             courses.map((course) => {
                 coursesList.push(
@@ -90,9 +123,6 @@ export default class Profile extends React.Component{
             this.setState({courses: coursesList});
         }
     }
-
-    
-
 
 
     render(){
@@ -114,6 +144,7 @@ export default class Profile extends React.Component{
                     <div className='col-lg-1 col-0'></div><div className="col-12 col-lg-5 field-info" style={{overflow:'hidden'}}><h4 style={{float:'left'}}>Email:</h4><h5 id='email' style={{float:'left', margin: '5px 0 0 10px'}}>{this.email}</h5></div>
                     <div className="col-12 col-lg-5 field-info"><h4 style={{float:'left'}}>Tipo de Usuario:</h4><h5 id='usertype' style={{float:'left', margin: '2px 0 0 10px'}}>{this.usertype}</h5></div>
             </div>
+            
             <div className="row container-info">
                 <h2 className = "col-12 title-info">Cursos en los que está inscripto</h2>
                 <div id="tableDivCourses" className="col-12 col-lg-10 container-fluid">
@@ -136,6 +167,11 @@ export default class Profile extends React.Component{
                             })}
                         </tbody> 
                     </Table> 
+                </div>
+                <div id="tablePaginator">
+                        <button style={{float:'left'} } id='buttonPageLeft' onClick={this.subtractPage}>&laquo;Previous Page</button>
+                        <div style={{float:'left'}} id='currentPage'>{this.state.page}/{this.state.maxPages}</div>
+                        <button style={{float:'left'}} id='buttonPageRight' onClick={this.sumPage}>Next Page&raquo;</button>
                 </div>
             </div>
         </div>

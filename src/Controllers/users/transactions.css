@@ -1,23 +1,23 @@
 @import "../common/colors.css";
-
+/*
 #usersTable{
     background-color: var(--light-blue-custom) !important;
     padding: 0;
     margin: 0;
 }
-
+*/
 
 .centered_content{
     text-align: center;
 }
-
+/*
 #tableDiv{
     border-radius: 0.75rem;
     padding: 10px;
     background-color: var(--light-blue-custom);
     box-shadow:10px 15px 15px 5px var(--shadow-color);
 }
-
+*/
 .btn-primary{
     background-color: var(--purple-custom);
     border-color: var(--purple-custom);

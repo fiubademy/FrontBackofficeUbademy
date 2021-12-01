@@ -23,6 +23,7 @@ export default class CourseView extends React.Component{
         }else{
             if(info_response.status === 498){
                 localStorage.removeItem("sessionToken");
+                window.location.reload(false);
             }
             this.setState({courseInfo: null});
         }
@@ -81,7 +82,7 @@ export default class CourseView extends React.Component{
                         <div className="col-12 col-lg-12 field-info"><h4 style={{float:'left'}}>Descripción:</h4><h5 id='usertype' style={{float:'left', margin: '2px 0 0 10px'}}>{this.state.courseInfo.description}</h5></div>
                         <div className="col-12 col-lg-12 field-info"><h4 style={{float:'left'}}>Hashtags:</h4><h5 id='usertype' style={{float:'left', margin: '2px 0 0 10px'}}>
                             {
-                                this.state.courseInfo.hashtags.map((hashtag, index) => {{
+                                this.state.courseInfo.hashtags.map((hashtag, index) => {
                                     if (index === 0){
                                         return('( '+hashtag+' ; ');
                                     }
@@ -90,7 +91,7 @@ export default class CourseView extends React.Component{
                                     }else{
                                         return(hashtag + ' )');
                                     }
-                                }})
+                                })
                             }</h5></div>
                 </div>
             </div>

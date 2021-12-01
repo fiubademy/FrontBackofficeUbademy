@@ -32,14 +32,22 @@ class Login extends React.Component{
     }
 
     async createSession(){
-        let email = document.getElementById("loginEmail").value;
-        let password = document.getElementById("loginPassword").value;
+        let emailValue = document.getElementById("loginEmail").value;
+        let passwordValue = document.getElementById("loginPassword").value;
         let info;
-        let info_response = await fetch("https://api-gateway-fiubademy.herokuapp.com/users/loginAdmin?email="+email+"&password="+password,
+        let info_response = await fetch("https://api-gateway-fiubademy.herokuapp.com/users/loginAdmin",
             {
-                method: 'POST'
+                method: 'POST',
+                headers: {'Content-Type': 'application/json', 'accept': 'application/json'},
+                body: JSON.stringify({email: emailValue, password: passwordValue})
             }
         );
+            /* {
+  "email": "string",
+  "password": "string"
+}*/
+
+
         info = await info_response.json();
         if(await info_response.status === 202){
             localStorage.setItem("sessionToken", info);

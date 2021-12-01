@@ -27,7 +27,8 @@ class Users extends React.Component {
                 usersList.push(
                     {
                         user_id: user.user_id,
-                        username: user.username
+                        username: user.username,
+                        is_blocked: user.is_blocked
                     }
                 );
                 return null;
@@ -55,19 +56,6 @@ class Users extends React.Component {
 
     componentDidMount(){
         this.getTableHTMLForUsersFromAPI();
-    }
-
-    handleViewProfile(){
-        alert(this.username);
-    }
-
-    handleBlock(){
-
-        alert(this.user_id + this.username);
-    }
-
-    handleUnblock(){
-        alert("Not yet implemented");
     }
 
     handleLoadBalance(){
@@ -117,7 +105,7 @@ class Users extends React.Component {
                             <th> User ID </th> 
                             <th> Username </th> 
                             <th> View Profile </th> 
-                            <th> Block </th> 
+                            <th> Block/Unblock </th> 
                             <th> Load Balance </th> 
                             </tr> 
                         </thead> 
