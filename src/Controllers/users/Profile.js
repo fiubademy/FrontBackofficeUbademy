@@ -77,6 +77,9 @@ export default class Profile extends React.Component{
         if (courses_data.status === 200){
             courses_data = await courses_data.json();
             this.setState({maxPages: courses_data['num_pages']});
+            if(courses_data['num_pages'] <= 0){
+                this.setState({maxPages: 1});
+            }
             return courses_data['content'];
         }else{
             this.setState({maxPages: 1});

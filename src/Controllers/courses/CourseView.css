@@ -1,7 +1,7 @@
 .container-info-courses{
     padding: 0;
     border: 20px solid var(--light-green-custom);
-    background-color: var(--light-green-custom);
+    background-color: white;
     border-radius: 15px;
     box-shadow: 10px 15px 15px 5px #999999;
     margin-bottom: 60px;
@@ -9,16 +9,17 @@
 
 .title-info-course{
     color: black;
-    background-color: var(--light-green-custom);
+    border-top-left-radius: 0.75rem;
+    border-top-right-radius: 0.75rem;
     text-align:center;
     margin-bottom: 20px;
     border-bottom: 3px solid black;
 }
 
 .field-info{
-    border: 2px solid var(--purple-custom);
-    background-color: var(--purple-custom);
-    color:white;
+    background-color: rgb(238, 238, 238);
+    border: 2px solid black;
+    color:black;
     border-radius: 10px;
     margin: 10px;
 }

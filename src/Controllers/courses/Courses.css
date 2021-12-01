@@ -9,13 +9,10 @@
 }
 
 .courseFilterInput{
-    background-color: var(--light-green-custom);
     color:black;
-    padding: 10px;
     border-radius: 10px;
-    border: 15px solid var(--light-green-custom);
+    border: 2px solid gray;
     box-shadow:4px 6px 6px 2px var(--shadow-color);
-    font-size: 20px;
 }
 
 #filtersDiv{
@@ -26,13 +23,13 @@
 }
 
 #tituloFiltros{
-    margin: 20px auto;
+    margin: 10px auto;
     text-align:center;
-    font-size:50px;
+    font-size:40px;
 }
 
 #btn_filtrar{
-    font-size: 25px;
+    font-size: 15px;
 }
 
 #tableDivCoursesModule{

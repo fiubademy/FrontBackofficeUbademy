@@ -81,11 +81,9 @@
 }
 
 .filterInput{
-    background-color: var(--light-blue-custom);
     color:black;
-    padding: 10px;
     border-radius: 10px;
-    border: 15px solid var(--light-blue-custom);
+    border: 2px solid gray;
     box-shadow:4px 6px 6px 2px var(--shadow-color);
     
 }

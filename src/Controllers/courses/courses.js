@@ -32,9 +32,6 @@ export default class Courses extends React.Component{
         if (this.state.nameFilter !== ''){
             url = url + "&name="+this.state.nameFilter
         }
-        if (this.state.ownerFilter !== ''){
-            url = url + "&owner="+this.state.ownerFilter
-        }
         if (this.state.descriptionFilter !== ''){
             url = url + "&description="+this.state.descriptionFilter
         }
@@ -72,9 +69,16 @@ export default class Courses extends React.Component{
         let response = await this.fetchCourses();
         if (response !== 'ERROR'){
             for(let i=0; i<response['content'].length; i++){
-                coursesList.push(response['content'][i]);
+                let ownerEmail = await fetch("https://api-gateway-fiubademy.herokuapp.com/users/ID/"+response['content'][i]["ownerId"]);
+                ownerEmail = await ownerEmail.json();
+                ownerEmail = ownerEmail['email'];
+                response['content'][i]["ownerEmail"] = ownerEmail;
+                coursesList.push(response['content'][i])
             }
             this.setState({maxPages: response['num_pages'], courses: coursesList});
+            if (response['num_pages'] <= 0){
+                this.setState({maxPages: 1});
+            }
         }else{
             this.setState({courses: coursesList, maxPages: 1});
         }
@@ -91,7 +95,6 @@ export default class Courses extends React.Component{
             {
                 page: 1, 
                 nameFilter: document.getElementById('courseNameFilter').value,
-                ownerFilter: document.getElementById('courseOwnerFilter').value,
                 descriptionFilter: document.getElementById('courseDescriptionFilter').value,
                 sub_levelFilter: document.getElementById('courseSubLevelFilter').value,
                 latitudeFilter: document.getElementById('courseLatitudeFilter').value,
@@ -128,20 +131,23 @@ export default class Courses extends React.Component{
                 </h1>
                 <div id="filtersDiv" className={'row d-flex justify-content-around'}>
                     <h2 id="tituloFiltros">Filtros</h2>
-                    <input className={'col-12 col-lg-5 courseFilterInput mb-4'} placeholder='Filtrar por Nombre...' id='courseNameFilter'></input>
-                    <input className={'col-12 col-lg-5 courseFilterInput mb-4'} placeholder='Filtrar por Dueño...' id='courseOwnerFilter'></input>
-                    <input className={'col-12 col-lg-5 courseFilterInput mb-4'} placeholder='Filtrar por Descripcion...' id='courseDescriptionFilter'></input>
-                    <input className={'col-12 col-lg-5 courseFilterInput mb-4'} placeholder='Filtrar por Sub Level...' id='courseSubLevelFilter'></input>
-                    <input className={'col-12 col-lg-5 courseFilterInput mb-4'} placeholder='Filtrar por Latitud...' id='courseLatitudeFilter'></input>
-                    <input className={'col-12 col-lg-5 courseFilterInput mb-4'} placeholder='Filrar por Longitud...' id='courseLongitudeFilter'></input>
-                    <Button id='btn_filtrar' className={'col-lg-6 mb-4 box-shadow pt-4 pb-4'} onClick={this.filterCourses}>Filtrar Cursos</Button>
+                    <div class="row d-flex justify-content-around">
+                        <input className={'col-4 col-lg-2 courseFilterInput mb-4'} placeholder='Filtrar por Nombre...' id='courseNameFilter'></input>
+                        <input className={'col-4 col-lg-2 courseFilterInput mb-4'} placeholder='Filtrar por Descripcion...' id='courseDescriptionFilter'></input>
+                        <input className={'col-4 col-lg-2 courseFilterInput mb-4'} placeholder='Filtrar por Sub Level...' id='courseSubLevelFilter'></input>
+                    </div>
+                    <div class="row d-flex justify-content-around">
+                        <input className={'col-4 col-lg-2 courseFilterInput mb-4'} placeholder='Filtrar por Latitud...' id='courseLatitudeFilter'></input>
+                        <input className={'col-4 col-lg-2 courseFilterInput mb-4'} placeholder='Filrar por Longitud...' id='courseLongitudeFilter'></input>
+                        <div className={'col-4 col-lg-2'}></div>
+                    </div>
+                    <Button id='btn_filtrar' className={'col-4 col-md-2 col-lg-1 mb-4 box-shadow'} onClick={this.filterCourses}>Filtrar Cursos</Button>
                 </div>
                 <div id="tableDivCoursesModule" className="col-12 col-lg-10 container-fluid">
                     <Table id="coursesModuleTable" responsive striped>
                         <thead>
                             <tr className = "centered_content">
-                            <th> Course ID </th> 
-                            <th> Owner ID </th> 
+                            <th> Owner's Email </th> 
                             <th> Name </th>
                             <th> Description </th>
                             <th> Latitude </th>
@@ -156,8 +162,7 @@ export default class Courses extends React.Component{
                                     let href = "./courses/view/?course_id="+ course.id;
                                     let index_key = String(index);
                                     return (<tr key={index} className = "centered_content">
-                                    <td key={index_key+ course.id+'0'}>{course.id}</td>
-                                    <td key={index_key+ course.ownerId+'1'}>{course.ownerId}</td>
+                                    <td key={index_key+ course.ownerId+'1'}>{course.ownerEmail}</td>
                                     <td key={index_key+ course.name+'2'}>{course.name}</td>
                                     <td key={index_key+ course.description+'3'}>{course.description}</td>
                                     <td key={index_key+ course.latitude+'4'}>{course.latitude}</td>
