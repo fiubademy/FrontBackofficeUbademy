@@ -129,21 +129,21 @@ export default class Courses extends React.Component{
                 <h1 id="TituloCursos" style = {{ textAlign: 'center'}} className = "pt-5 mt-4 mb-5 col-12">
                     Administración de Cursos
                 </h1>
-                <div id="filtersDiv" className={'row d-flex justify-content-around'}>
-                    <h2 id="tituloFiltros">Filtros</h2>
-                    <div class="row d-flex justify-content-around">
-                        <input className={'col-4 col-lg-2 courseFilterInput mb-4'} placeholder='Filtrar por Nombre...' id='courseNameFilter'></input>
-                        <input className={'col-4 col-lg-2 courseFilterInput mb-4'} placeholder='Filtrar por Descripcion...' id='courseDescriptionFilter'></input>
-                        <input className={'col-4 col-lg-2 courseFilterInput mb-4'} placeholder='Filtrar por Sub Level...' id='courseSubLevelFilter'></input>
-                    </div>
-                    <div class="row d-flex justify-content-around">
-                        <input className={'col-4 col-lg-2 courseFilterInput mb-4'} placeholder='Filtrar por Latitud...' id='courseLatitudeFilter'></input>
-                        <input className={'col-4 col-lg-2 courseFilterInput mb-4'} placeholder='Filrar por Longitud...' id='courseLongitudeFilter'></input>
-                        <div className={'col-4 col-lg-2'}></div>
-                    </div>
-                    <Button id='btn_filtrar' className={'col-4 col-md-2 col-lg-1 mb-4 box-shadow'} onClick={this.filterCourses}>Filtrar Cursos</Button>
-                </div>
+                
                 <div id="tableDivCoursesModule" className="col-12 col-lg-10 container-fluid">
+                    <div id="filtersDiv" className={'row d-flex justify-content-around'}>
+                        <div class="row d-flex justify-content-around pt-4">
+                            <input className={'col-4 col-lg-2 courseFilterInput mb-4'} placeholder='Filtrar por Nombre...' id='courseNameFilter'></input>
+                            <input className={'col-4 col-lg-2 courseFilterInput mb-4'} placeholder='Filtrar por Descripcion...' id='courseDescriptionFilter'></input>
+                            <input className={'col-4 col-lg-2 courseFilterInput mb-4'} placeholder='Filtrar por Sub Level...' id='courseSubLevelFilter'></input>
+                        </div>
+                        <div class="row d-flex justify-content-around">
+                            <input className={'col-4 col-lg-2 courseFilterInput mb-4'} placeholder='Filtrar por Latitud...' id='courseLatitudeFilter'></input>
+                            <input className={'col-4 col-lg-2 courseFilterInput mb-4'} placeholder='Filrar por Longitud...' id='courseLongitudeFilter'></input>
+                            <div className={'col-4 col-lg-2'}></div>
+                        </div>
+                        <Button id='btn_filtrar' className={'col-4 col-md-2 col-lg-1 mb-4'} onClick={this.filterCourses}>Filtrar Cursos</Button>
+                    </div>
                     <Table id="coursesModuleTable" responsive striped>
                         <thead>
                             <tr className = "centered_content">

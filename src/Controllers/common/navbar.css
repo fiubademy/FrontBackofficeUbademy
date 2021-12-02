@@ -32,13 +32,13 @@ a.dropdown-toggle{
 }
 
 #dropdown_servicios:hover{
-    -webkit-text-stroke: 1px var(--light-pink-custom) !important;
+    -webkit-text-stroke: 1px var(--light-green-custom) !important;
     color: var(--light-green-custom);
 }
 
 
 #dropdown_cursos:hover{
-    -webkit-text-stroke: 1px var(--light-green-custom) !important;
+    -webkit-text-stroke: 1px var(--light-pink-custom) !important;
     color: var(--light-pink-custom);
 }
 
@@ -61,11 +61,11 @@ a.dropdown-toggle{
 }
 
 .serviceItem:hover{
-    background-color: var(--light-pink-custom) !important;
+    background-color: var(--light-green-custom) !important;
 }
 
 .courseItem:hover{
-    background-color: var(--light-green-custom) !important;
+    background-color: var(--light-pink-custom) !important;
 }
 
 #button-logout{

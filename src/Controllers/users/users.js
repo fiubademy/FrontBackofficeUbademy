@@ -96,17 +96,18 @@ class Users extends React.Component {
                 <h1 id="TituloUsuarios" style = {{ textAlign: 'center'}} className = "pt-5 mt-4 mb-5 col-12">
                     Administración de Usuarios 
                 </h1>
-                <div id="filtersDiv" className={'row d-flex justify-content-around'}>
-                    <h2 id="tituloFiltros">Filtros</h2>
-                    <div class="row d-flex justify-content-around">
-                        <input className={'col-5 col-md-4 col-lg-2 filterInput mb-4'} placeholder='Filter by Email...' id='emailFilter'></input>
-                        <input className={'col-5 col-md-4 col-lg-2 filterInput mb-4'} placeholder='Filter by Username...' id='usernameFilter'></input>
-                        <Button className={'col-5 col-lg-2 mb-4 box-shadow'} onClick={this.filterUsers}>Filter Users</Button>
-
-                    </div>
-                </div>
+                
                 <div id="tableDiv" className="col-12 col-lg-10 container-fluid">
+                    <div id="filtersDiv" className={'row d-flex justify-content-around'}>
+                        <div class="row d-flex justify-content-around pt-4">
+                            <input className={'col-5 col-md-4 col-lg-2 filterInput mb-4'} placeholder='Filter by Email...' id='emailFilter'></input>
+                            <input className={'col-5 col-md-4 col-lg-2 filterInput mb-4'} placeholder='Filter by Username...' id='usernameFilter'></input>
+                            <Button className={'col-5 col-lg-2 mb-4'} onClick={this.filterUsers}>Filter Users</Button>
+
+                        </div>
+                    </div>
                     <Table id="usersTable" responsive striped>
+                        
                         <thead>
                             <tr className = "centered_content">
                             <th> Email </th> 
