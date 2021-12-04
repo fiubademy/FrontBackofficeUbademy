@@ -11,7 +11,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import NavigationBar from "../Controllers/common/navbar.js";
 import Home from "../Controllers/homepage/Home.js";
 import Users from "../Controllers/users/users.js";
-import Transactions from "../Controllers/users/transactions.js";
+import Metrics from "../Controllers/users/Metrics.js";
 import Courses from "../Controllers/courses/courses.js";
 import Services from "../Controllers/services/services.js";
 import "../Controllers/common/cards.css";
@@ -45,7 +45,7 @@ function App() {
 			<Switch>
 				<Route exact path="/" component={Home}/>
 				<Route exact path="/users" component={Users}/>
-				<Route exact path="/users/transactions" component={Transactions}/>
+				<Route exact path="/users/metrics" component={Metrics}/>
 				<Route path = "/users/profile" component={Profile}/>
 				<Route exact path="/services" component={Services}/>
 				<Route exact path="/courses" component={Courses}/>

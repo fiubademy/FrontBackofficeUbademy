@@ -31,30 +31,21 @@ export default function NavigationBar() {
 				title="Usuarios"
 				id="dropdown_usuarios"
 				>
-				<NavDropdown.Item href="/users" className="userItem">
-					Administrar Usuarios
-				</NavDropdown.Item>
-				<NavDropdown.Item href="/users/transactions" className="userItem">
-					Listado de transacciones
-				</NavDropdown.Item>
+					<NavDropdown.Item href="/users" className="userItem">
+						Administrar Usuarios
+					</NavDropdown.Item>
+					<NavDropdown.Item href="/users/metrics" className="userItem">
+						Métricas de Usuarios
+					</NavDropdown.Item>
 				</NavDropdown>
 				<NavDropdown
 				className="mx-3"
 				title="Cursos"
 				id="dropdown_cursos"
 				>
-				<NavDropdown.Item href="/courses" className="courseItem">
-					Administrar Cursos
-				</NavDropdown.Item>
-				</NavDropdown>
-				<NavDropdown
-				className="mx-3"
-				title="Servicios"
-				id="dropdown_servicios"
-				>
-				<NavDropdown.Item href="/services" className="serviceItem">
-					Administrar Servicios
-				</NavDropdown.Item>
+					<NavDropdown.Item href="/courses" className="courseItem">
+						Administrar Cursos
+					</NavDropdown.Item>
 				</NavDropdown>
 			</Nav>
 			<Nav className="ms-auto">
