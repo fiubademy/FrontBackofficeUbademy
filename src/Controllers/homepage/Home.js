@@ -12,8 +12,7 @@ export default function Home() {
 					titulo="Administracion de Usuarios"
 					descripcion="Módulo para creación y administración de proyectos y tareas."
 					src_imagen="./usuario.jpg"
-					href={[["Usuarios", "./users"],["Transacciones", "/users/transactions"]]}
-					className="pepe"
+					href={[["Usuarios", "./users"],["Métricas", "/users/metrics"]]}
 				/>
 				<DashboardHomeCard
 					codigo = "cursos-card"
@@ -21,13 +20,6 @@ export default function Home() {
 					descripcion="Módulo para visualización de Recursos y Carga de Horas."
 					src_imagen="./courses.jpg"
 					href={[["Cursos", "./courses"]]}
-				/>
-				<DashboardHomeCard
-					codigo = "servicios-card"
-					titulo="Administración de Servicios"
-					descripcion="Modulo para visualizar y crear Tickets."
-					src_imagen="./services.jpg"
-					href={[["Servicios", "./services"]]}
 				/>
 			</div>
 		</div>
