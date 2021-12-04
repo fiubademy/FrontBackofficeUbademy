@@ -1,7 +1,7 @@
 @import "../common/colors.css";
 
 #TituloCursos{
-    background-color: var(--light-green-custom) !important;
+    background-color: var(--light-pink-custom) !important;
     padding: 30px 0;
     border-radius:30px;
     border-top:0;
@@ -9,35 +9,19 @@
 }
 
 .courseFilterInput{
-    background-color: var(--light-green-custom);
     color:black;
-    padding: 10px;
     border-radius: 10px;
-    border: 15px solid var(--light-green-custom);
-    box-shadow:4px 6px 6px 2px var(--shadow-color);
-    font-size: 20px;
+    border: 2px solid gray;
 }
 
-#filtersDiv{
-    /*background-color: lightgray;*/
-    border: 10px solid black;
-    border-radius:30px;
-    margin-bottom: 30px;
-}
-
-#tituloFiltros{
-    margin: 20px auto;
-    text-align:center;
-    font-size:50px;
-}
 
 #btn_filtrar{
-    font-size: 25px;
+    font-size: 15px;
 }
 
 #tableDivCoursesModule{
     border-radius: 0.75rem;
-    background-color: var(--light-green-custom) !important;
+    background-color: var(--light-pink-custom) !important;
     padding: 10px;
     box-shadow:10px 15px 15px 5px var(--shadow-color);
 }

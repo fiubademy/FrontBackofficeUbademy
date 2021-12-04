@@ -5,9 +5,9 @@
 }
 
 #cursos-card{
-    background-color: var(--light-green-custom);
+    background-color: var(--light-pink-custom);
 }
 
 #servicios-card{
-    background-color: var(--light-pink-custom);
+    background-color: var(--light-green-custom);
 }
