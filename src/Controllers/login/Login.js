@@ -3,6 +3,7 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import { withRouter } from 'react-router';
 import './Login.css';
+import Spinner from 'react-bootstrap/Spinner';
 
 
 class Login extends React.Component{
@@ -12,7 +13,8 @@ class Login extends React.Component{
         this.render = this.render.bind(this);
         this.state = {
             showModal: false,
-            errorLogin: null
+            errorLogin: null,
+            loading: false
         }
         this.createSession = this.createSession.bind(this);
         this.handleCloseModal = this.handleCloseModal.bind(this);
@@ -32,6 +34,7 @@ class Login extends React.Component{
     }
 
     async createSession(){
+        this.setState({loading: true});
         let emailValue = document.getElementById("loginEmail").value;
         let passwordValue = document.getElementById("loginPassword").value;
         let info;
@@ -42,18 +45,13 @@ class Login extends React.Component{
                 body: JSON.stringify({email: emailValue, password: passwordValue})
             }
         );
-            /* {
-  "email": "string",
-  "password": "string"
-}*/
-
 
         info = await info_response.json();
         if(await info_response.status === 202){
             localStorage.setItem("sessionToken", info);
             window.location.reload(false);
         }else{
-            this.setState({errorLogin: info});
+            this.setState({errorLogin: info, loading: false});
             this.handleShowModal();
         }
     }
@@ -62,11 +60,20 @@ class Login extends React.Component{
         return(
             <div className={"container-fluid d-flex justify-content-center"}>
                 <div id="container-login" className={" col-12 col-lg-6"}>
-                    <h2 id="login-title">Login as Admin</h2>
+                    <h2 id="login-title">Login Como Administrador</h2>
                     <p className={"d-flex justify-content-center mt-4 mb-4"}><img src="/Ubademy_inverted.png" width="200px" alt="Ubademy Inverted Logo"></img></p>
                     <p><input id="loginEmail" type="text" placeholder="Admin's email..." className={"input-login mt-3"}></input></p>
                     <p><input id="loginPassword" type="password" placeholder="Password..." className={"input-login mt-3"}></input></p>
-                    <p className={"d-flex justify-content-center"}><Button id="button-login" className={"btn-primary"} onClick={this.createSession}>Log In</Button></p>
+                    <p className={"d-flex justify-content-center"}>
+                        {this.state.loading ? 
+                            <Spinner animation="border" role="status">
+                                <span className="visually-hidden">Loading...</span>
+                            </Spinner>
+                        :
+                            <Button id="button-login" className={"btn-primary"} onClick={this.createSession}>Log In</Button>
+                        }
+                        
+                    </p>
                 </div>
                 <Modal show={this.state.showModal} onHide={this.handleCloseModal}>
                     <Modal.Header closeButton>

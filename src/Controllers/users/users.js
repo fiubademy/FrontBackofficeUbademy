@@ -62,10 +62,6 @@ class Users extends React.Component {
         this.getTableHTMLForUsersFromAPI();
     }
 
-    handleLoadBalance(){
-        alert("Not yet implemented");
-    }
-
     async subtractPage(){
         if(this.state.page-1 < 1){
             await this.setState({page:this.state.maxPages});
@@ -100,9 +96,9 @@ class Users extends React.Component {
                 <div id="tableDiv" className="col-12 col-lg-10 container-fluid">
                     <div id="filtersDiv" className={'row d-flex justify-content-around'}>
                         <div class="row d-flex justify-content-around pt-4">
-                            <input className={'col-5 col-md-4 col-lg-2 filterInput mb-4'} placeholder='Filter by Email...' id='emailFilter'></input>
-                            <input className={'col-5 col-md-4 col-lg-2 filterInput mb-4'} placeholder='Filter by Username...' id='usernameFilter'></input>
-                            <Button className={'col-5 col-lg-2 mb-4'} onClick={this.filterUsers}>Filter Users</Button>
+                            <input className={'col-5 col-md-4 col-lg-2 filterInput mb-4'} placeholder='Filtrar por Email...' id='emailFilter'></input>
+                            <input className={'col-5 col-md-4 col-lg-2 filterInput mb-4'} placeholder='Filtrar por Nombre de usuario...' id='usernameFilter'></input>
+                            <Button className={'col-5 col-lg-2 mb-4'} onClick={this.filterUsers}>Filtrar Usuarios</Button>
 
                         </div>
                     </div>
@@ -110,11 +106,10 @@ class Users extends React.Component {
                         
                         <thead>
                             <tr className = "centered_content">
-                            <th> Email </th> 
-                            <th> Username </th> 
-                            <th> View Profile </th> 
-                            <th> Block/Unblock </th> 
-                            <th> Load Balance </th> 
+                                <th> Email </th> 
+                                <th> Nombre de usuario </th> 
+                                <th> Ver Perfil </th> 
+                                <th> Bloquear/Desbloquear </th> 
                             </tr> 
                         </thead> 
                         <tbody>
@@ -125,9 +120,8 @@ class Users extends React.Component {
                                     return (<tr key={index} className = "centered_content">
                                     <td key={index+ user.email}>{user.email}</td>
                                     <td key={index+ user.username}>{user.username}</td>
-                                    <td key={index+ "Profile"}><a className="btn btn-primary" href={href}>View Profile</a></td>
+                                    <td key={index+ "Profile"}><a className="btn btn-primary" href={href}>Ver Perfil</a></td>
                                     <td key={index+ "Block"}><BlockModal user={user}/></td>
-                                    <td key={index+ "Balance"}><Button onClick={this.handleLoadBalance}>Load Balance</Button></td>
                                 </tr>);
                                 })
                             }
@@ -135,10 +129,9 @@ class Users extends React.Component {
                     </Table> 
                 </div>
                 <div id="tablePaginator">
-                    <button style={{float:'left'} } id='buttonPageLeft' onClick={this.subtractPage}>&laquo;Previous Page</button>
+                    <button style={{float:'left'} } id='buttonPageLeft' onClick={this.subtractPage}>&laquo; Anterior</button>
                     <div style={{float:'left'}} id='currentPage'>{this.state.page}/{this.state.maxPages}</div>
-                    <button style={{float:'left'}} id='buttonPageRight' onClick={this.sumPage}>Next Page&raquo;</button>
-
+                    <button style={{float:'left'}} id='buttonPageRight' onClick={this.sumPage}>Siguiente &raquo;</button>
                 </div>
             </div>
         );

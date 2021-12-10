@@ -77,10 +77,10 @@ export default class CourseView extends React.Component{
                         <div className="col-11 field-info" style={{overflow:'hidden'}}><h4 style={{float:'left'}}>Nombre:</h4><h5 id='username' style={{float:'left', margin: '5px 0 0 10px'}}>{this.state.courseInfo.name}</h5></div>
                         <div className="col-11 field-info" style={{overflow:'hidden'}}><h4 style={{float:'left'}}>Nivel de suscripción:</h4><h5 id='sub' style={{float:'left', margin: '5px 0 0 10px'}}>{this.traduceSubscription()}</h5></div>
                         <div className="col-11 field-info" style={{overflow:'hidden'}}><h4 style={{float:'left'}}>ID Curso:</h4><h5 style={{float:'left', margin: '5px 0 0 10px'}}>{this.state.courseInfo.id}</h5></div>
-                        <div className="col-11 field-info"><h4 style={{float:'left'}}>Ubicación:</h4><h5 id='location' style={{float:'left', margin: '5px 0 0 10px'}}>{this.getLocation()}</h5></div>
-                        <div className="col-11 field-info" style={{overflow:'hidden'}}><h4 style={{float:'left'}}>ID Dueño:</h4><h5 id='email' style={{float:'left', margin: '5px 0 0 10px'}}>{this.state.courseInfo.ownerId ? this.state.courseInfo.ownerId: 'Desconocido'}</h5></div>
+                        <div className="col-11 field-info"><h4 style={{float:'left'}}>Ubicaci&oacute;n:</h4><h5 id='location' style={{float:'left', margin: '5px 0 0 10px'}}>{this.getLocation()}</h5></div>
+                        <div className="col-11 field-info" style={{overflow:'hidden'}}><h4 style={{float:'left'}}>ID Due&ntilde;o:</h4><h5 id='email' style={{float:'left', margin: '5px 0 0 10px'}}>{this.state.courseInfo.ownerId ? this.state.courseInfo.ownerId: 'Desconocido'}</h5></div>
                         <div className="col-11 field-info"><h4 style={{float:'left'}}>Descripción:</h4><h5 id='usertype' style={{float:'left', margin: '5px 0 0 10px'}}>{this.state.courseInfo.description}</h5></div>
-                        <div className="col-11 field-info"><h4 style={{float:'left'}}>Hashtags:</h4><h5 id='usertype' style={{float:'left', margin: '5px 0 0 10px'}}>
+                        <div className="col-11 field-info"><h4 style={{float:'left'}}>Tags:</h4><h5 id='usertype' style={{float:'left', margin: '5px 0 0 10px'}}>
                             {
                                 this.state.courseInfo.hashtags.map((hashtag, index) => {
                                     if (index === 0){

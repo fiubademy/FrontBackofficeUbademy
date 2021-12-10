@@ -147,13 +147,13 @@ export default class Courses extends React.Component{
                     <Table id="coursesModuleTable" responsive striped>
                         <thead>
                             <tr className = "centered_content">
-                            <th> Owner's Email </th> 
-                            <th> Name </th>
-                            <th> Description </th>
-                            <th> Latitude </th>
-                            <th> Longitude </th>
-                            <th> Sub Level </th>
-                            <th> View Course </th>
+                                <th> Email del due&ntilde;o </th> 
+                                <th> Nombre </th>
+                                <th> Descripci&oacute;n </th>
+                                <th> Latitud </th>
+                                <th> Longitud </th>
+                                <th> Nivel de Sub </th>
+                                <th> Ver Curso </th>
                             </tr> 
                         </thead> 
                         <tbody>
@@ -168,7 +168,7 @@ export default class Courses extends React.Component{
                                     <td key={index_key+ course.latitude+'4'}>{course.latitude}</td>
                                     <td key={index_key+ course.longitude+'5'}>{course.longitude}</td>
                                     <td key={index_key+ course.sub_level+'6'}>{course.sub_level}</td>
-                                    <td key={index_key+ "Profile7"}><a className="btn btn-primary" href={href}>View Course</a></td>
+                                    <td key={index_key+ "Profile7"}><a className="btn btn-primary" href={href}>Ver Curso</a></td>
                                 </tr>);
                                 })
                             }
@@ -176,9 +176,9 @@ export default class Courses extends React.Component{
                     </Table> 
                 </div>
                 <div id="tablePaginator">
-                    <button style={{float:'left'} } id='buttonPageLeft' onClick={this.subtractPage}>&laquo;Previous Page</button>
+                    <button style={{float:'left'} } id='buttonPageLeft' onClick={this.subtractPage}>&laquo; Anterior</button>
                     <div style={{float:'left'}} id='currentPage'>{this.state.page}/{this.state.maxPages}</div>
-                    <button style={{float:'left'}} id='buttonPageRight' onClick={this.sumPage}>Next Page&raquo;</button>
+                    <button style={{float:'left'}} id='buttonPageRight' onClick={this.sumPage}>Siguiente &raquo;</button>
                 </div>
             </div>
         );

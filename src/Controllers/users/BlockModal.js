@@ -20,7 +20,7 @@ export default function BlockModal(user) {
             }
         );
         if(await info_response.status === 202){
-            alert(username + " has been correctly " + (isBlocked==='Y'? "unblocked":"blocked"));
+            alert(username + " fue correctamente " + (isBlocked==='Y'? "desbloqueado.":"bloqueado."));
 			window.location.reload(false);
         }else if (await info_response.status === 498){
             localStorage.removeItem("sessionToken");
@@ -38,19 +38,19 @@ export default function BlockModal(user) {
     return (
       <>
         <Button onClick={handleShow}>
-			    {isBlocked==='Y'? "Unblock" : "Block"}
+			    {isBlocked==='Y'? "Desbloquear" : "Bloquear"}
         </Button>
         <Modal show={show} onHide={handleClose}>
           <Modal.Header closeButton>
-            <Modal.Title id="contained-modal-title-vcenter">{isBlocked==='Y'? "Unblock" : "Block"} {username}?</Modal.Title>
+            <Modal.Title id="contained-modal-title-vcenter">¿{isBlocked==='Y'? "Desbloquear a" : "Bloquear a"} {username}?</Modal.Title>
           </Modal.Header>
-          <Modal.Body>Are you sure that you want to {isBlocked==='Y'? "unblock" : "block"} {username}?</Modal.Body>
+          <Modal.Body>¿Est&aacute;s seguro de {isBlocked==='Y'? "desbloquear a" : "bloquear a"} {username}?</Modal.Body>
           <Modal.Footer>
             <Button variant="secondary" onClick={handleClose}>
-              Cancel
+              Cancelar
             </Button>
-            <Button variant="primary" onClick={toggleBlockUser}>
-				      {isBlocked==='Y'? "Unblock" : "Block"}
+            <Button variant="primary" onClick={toggleBlockUser} style={{borderRadius: 0}}>
+				      {isBlocked==='Y'? "Desbloquear" : "Bloquear"}
             </Button>
           </Modal.Footer>
         </Modal>

@@ -152,6 +152,7 @@ export default class Profile extends React.Component{
                     <div className="col-12 col-lg-5 field-info"><h4 style={{float:'left'}}>Tipo de Usuario:</h4><h5 id='usertype' style={{float:'left', margin: '2px 0 0 10px'}}>{this.state.usertype}</h5></div>
             </div>
             
+            {this.state.courses.length > 0 ?
             <div className="row container-info">
                 <h2 className = "col-12 title-info">Cursos en los que está inscripto</h2>
                 <div id="tableDivCourses" className="col-12 col-lg-10 container-fluid">
@@ -176,11 +177,11 @@ export default class Profile extends React.Component{
                     </Table> 
                 </div>
                 <div id="tablePaginator">
-                        <button style={{float:'left'} } id='buttonPageLeft' onClick={this.subtractPage}>&laquo;Previous Page</button>
+                        <button style={{float:'left'} } id='buttonPageLeft' onClick={this.subtractPage}>&laquo; Anterior</button>
                         <div style={{float:'left'}} id='currentPage'>{this.state.page}/{this.state.maxPages}</div>
-                        <button style={{float:'left'}} id='buttonPageRight' onClick={this.sumPage}>Next Page&raquo;</button>
+                        <button style={{float:'left'}} id='buttonPageRight' onClick={this.sumPage}>Siguiente &raquo;</button>
                 </div>
-            </div>
+            </div>: null}
         </div>
         );
     }
