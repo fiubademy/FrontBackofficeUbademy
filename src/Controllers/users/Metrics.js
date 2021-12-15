@@ -37,7 +37,7 @@ export default class Metrics extends React.Component {
                         onClick={this.generarMetricas}>Generar Métricas</Button>
                 </div>
                 <div>
-                    <Accordion defaultActiveKey="0" flush>
+                    <Accordion id="accordion-metrics" defaultActiveKey="0" flush>
                         <Accordion.Item eventKey="0">
                             <Accordion.Header>Métricas de Login</Accordion.Header>
                             <Accordion.Body className="d-flex justify-content-around row">
@@ -68,7 +68,7 @@ export default class Metrics extends React.Component {
                         <Accordion.Item eventKey="2">
                             <Accordion.Header>Métricas de Bloqueos</Accordion.Header>
                             <Accordion.Body className = "d-flex justify-content-center row">
-                                <div className="col-12 d-flex justify-content-center">
+                                <div className="col-12 col-lg-5 d-flex justify-content-center">
                                     <img src={"https://api-gateway-fiubademy.herokuapp.com/users/metrics/blocks/"+this.state.quantityDays}
                                         width="700" alt="Block Metrics"/>
                                 </div>
@@ -76,8 +76,8 @@ export default class Metrics extends React.Component {
                         </Accordion.Item>
                         <Accordion.Item eventKey="3">
                             <Accordion.Header>Métricas de Recuperos de contraseña</Accordion.Header>
-                            <Accordion.Body classname = "d-flex justify-content-center row">
-                                <div className="col-12 d-flex justify-content-center">
+                            <Accordion.Body className = "d-flex justify-content-center row">
+                                <div className="col-12 col-lg-5 d-flex justify-content-center">
                                     <img src={"https://api-gateway-fiubademy.herokuapp.com/users/metrics/password_recoveries/"+this.state.quantityDays}
                                         width="700" alt="Password Recovery Metrics"/>
                                 </div>
