@@ -8,11 +8,15 @@ class Users extends React.Component {
 
     async fetchUsers(){
         let info;
-        let info_response = await fetch("https://api-gateway-fiubademy.herokuapp.com/users/"+this.state.page+"?emailFilter="+this.state.emailFilter+"&usernameFilter="+this.state.usernameFilter); //Despues habría que integrar lo de la pagina y la API Gateway.
+        let info_response = await fetch("https://api-gateway-fiubademy.herokuapp.com/users/"+this.state.page+"?emailFilter="+this.state.emailFilter+"&usernameFilter="+this.state.usernameFilter+"&sessionToken="+localStorage.getItem("sessionToken")); //Despues habría que integrar lo de la pagina y la API Gateway.
         if(await info_response.status === 200){
             info = await info_response.json();
             return info;
         }else{
+            if(info_response.status === 498){
+                localStorage.removeItem("sessionToken");
+                window.location.reload(false);
+            }
             return 'ERROR';
         }
     }

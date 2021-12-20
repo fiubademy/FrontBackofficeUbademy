@@ -84,6 +84,10 @@ export default class Profile extends React.Component{
             }
             return courses_data['content'];
         }else{
+            if(courses_data.status === 498){
+                localStorage.removeItem("sessionToken");
+                window.location.reload(false);
+            }
             this.setState({maxPages: 1});
             return 'ERROR';
         }
